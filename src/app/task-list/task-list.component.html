@@ -1,0 +1,17 @@
+<div class="filter-controls">
+  <mat-button-toggle-group [(value)]="filter" (change)="applyFilter($event.value)">
+    <mat-button-toggle value="all">Все</mat-button-toggle>
+    <mat-button-toggle value="active">Активные</mat-button-toggle>
+    <mat-button-toggle value="completed">Выполненные</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<mat-list>
+  <mat-list-item *ngFor="let task of filteredTasks">
+    <app-task-item 
+      [task]="task"
+      (toggle)="onToggleTask($event)"
+      (delete)="onDeleteTask($event)"
+    ></app-task-item>
+  </mat-list-item>
+</mat-list>

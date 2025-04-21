@@ -1,0 +1,46 @@
+<mat-card *ngIf="!loading" class="card">
+  <mat-card-header>
+    <mat-card-title>
+      {{ isEditMode ? 'Редактирование задачи' : 'Новая задача' }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Название</mat-label>
+        <input 
+          matInput
+          [(ngModel)]="task.title" 
+          name="title"
+          required
+          #titleInput="ngModel"
+        >
+        <mat-error *ngIf="titleInput.invalid && titleInput.touched">
+          Поле обязательно для заполнения
+        </mat-error>
+      </mat-form-field>
+
+       <mat-form-field appearance="outline">
+        <mat-label>Описание</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="task.description" 
+          name="description"
+          rows="4"
+        ></textarea>
+      </mat-form-field>
+
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="!taskForm.form.valid"
+      >
+        {{ isEditMode ? 'Обновить' : 'Создать' }}
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<app-spinner [loading]="loading"></app-spinner>

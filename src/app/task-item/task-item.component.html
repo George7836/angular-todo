@@ -1,0 +1,11 @@
+<div>
+  <mat-checkbox 
+    [checked]="task.completed" 
+    (click)="onToggle(!task.completed)"
+    color="primary"
+  ></mat-checkbox>
+  <a class="task-title" [routerLink]="['/task', task.id]" [class.completed]="task.completed">
+    {{ task.title }}
+  </a>
+  <button mat-icon-button color="warn" (click)="onDelete()"><mat-icon>delete</mat-icon></button>
+</div>

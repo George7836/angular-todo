@@ -1,0 +1,10 @@
+.task-title {
+  margin-left: 16px;
+  text-decoration: none;
+  color: inherit;
+  flex-grow: 1;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+}
